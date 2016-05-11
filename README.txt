@@ -5,7 +5,11 @@
        
          Communciate with the detector MCU by serial port.
 	  
-	     MAX support three ports.
+	      Merge two separate serial port, use one sp, and distinguish different date by the first bit of data(dat(1));
+	      
+	         Data from detect board 1, the first date(dat(1)) = 1;
+		 Data from detect board 2, the first date(dat(1)) = 2;
+
 
 			
 
