@@ -22,7 +22,7 @@ function varargout = WristRing(varargin)
 
 % Edit the above text to modify the response to help WristRing
 
-% Last Modified by GUIDE v2.5 18-Apr-2016 14:08:11
+% Last Modified by GUIDE v2.5 23-Aug-2016 14:04:23
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -497,46 +497,46 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 global s dat datLen;
 
 
-COM_value = get(handles.COM_menu,'value');  %µÃµ½µ±Ç°COM_menuµÄÖµ
-CHECK_value = get(handles.CHECK_menu,'value'); %µÃµ½µ±Ç°CHECK_menuµÄÖµ
-BAUD_value = get(handles.BAUD_menu,'value'); %µÃµ½µ±Ç°BAUD_menuµÄÖµ
-STOP_value = get(handles.STOP_menu,'value'); %µÃµ½µ±Ç°STOP_menuµÄÖµ
-DATA_value = get(handles.DATA_menu,'value'); %µÃµ½µ±Ç°DATA_menuµÄÖµ
+COM_value = get(handles.COM_menu,'value');  %ï¿½Ãµï¿½ï¿½ï¿½Ç°COM_menuï¿½ï¿½Öµ
+CHECK_value = get(handles.CHECK_menu,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°CHECK_menuï¿½ï¿½Öµ
+BAUD_value = get(handles.BAUD_menu,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°BAUD_menuï¿½ï¿½Öµ
+STOP_value = get(handles.STOP_menu,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°STOP_menuï¿½ï¿½Öµ
+DATA_value = get(handles.DATA_menu,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°DATA_menuï¿½ï¿½Öµ
 
 getcom = instrhwinfo ('serial');
-validcom = getcom.SerialPorts;   %»ñµÃÓÐÐ§µÄ´®¿ÚºÅ
+validcom = getcom.SerialPorts;   %ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä´ï¿½ï¿½Úºï¿½
 
-%»ñÈ¡ËùÓÐmenuµÄËùÓÐÖµ
-currentcom = {'COM1','COM2','COM3','COM4','COM5','COM6','COM7','COM8','COM9','COM10','COM11','COM12','COM13','COM14','COM15'};
+%ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½menuï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+currentcom = {'/dev/ttyUSB0', '/dev/ttyACM0', '/dev/ttyUSB1', '/dev/ttyACM1'};
 currentcheck = {'NONE','ODD','EVEN'};
 currentbaud = [300 600 1200 2400 4800 9600 19200 38400 43000 56000 57600 115200];
 currentstop = [1 2];
 currentdata = [6 7 8];
-judge0 = strcmpi(currentcom{COM_value},validcom); %Èç¹ûÓÐÐ§´®¿ÚºÍÉèÖÃµÄ´®¿ÚÒ»ÑùÎª1£¬·ñÔòÎª0
+judge0 = strcmpi(currentcom{COM_value},validcom); %ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ÃµÄ´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îª1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0
 if(judge0 == 1)
-% % %     s = serial(currentcom{COM_value},'BaudRate',currentbaud(1,BAUD_value),'DataBits',currentdata(1,DATA_value),... %´´½¨ÓÐÐ§COM¿Ú
+% % %     s = serial(currentcom{COM_value},'BaudRate',currentbaud(1,BAUD_value),'DataBits',currentdata(1,DATA_value),... %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
 % % %         'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),...
-% % %         'InputBufferSize',1000,...  %½ÓÊÕ»º³åÖµ×î´óÖµÎª1000
+% % %         'InputBufferSize',1000,...  %ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ÖµÎª1000
 % % %         'TimeOut',1,...
-% % %           'TimerPeriod', 0.1,...   %Ã¿0.1Ãëµ÷ÓÃÒ»´Î½ÓÊÕµÄ»Øµ÷º¯Êý
+% % %           'TimerPeriod', 0.1,...   %Ã¿0.1ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î½ï¿½ï¿½ÕµÄ»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 % % %           'timerfcn', {@mycallback, handles});
 
     
 
-% % %     s = serial(currentcom{COM_value},'BaudRate', currentbaud(1,BAUD_value), 'DataBits',currentdata(1,DATA_value),...  %´´½¨ÓÐÐ§COM¿Ú
+% % %     s = serial(currentcom{COM_value},'BaudRate', currentbaud(1,BAUD_value), 'DataBits',currentdata(1,DATA_value),...  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
 % % %          'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),'FlowControl','none');
     
     s = serial(currentcom{COM_value});
     
-    set(s,'BaudRate', 115200, 'DataBits',currentdata(1,DATA_value),...  %´´½¨ÓÐÐ§COM¿Ú
+    set(s,'BaudRate', 57600, 'DataBits',currentdata(1,DATA_value),...  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
          'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),'FlowControl','none','InputBufferSize',100);
     s.BytesAvailableFcnMode = 'terminator';  
     s.BytesAvailableFcn = {@sub_f_callback, handles, handles.editout, handles.editsp, handles.edit11, handles.edit21, handles.edit31, ...
         handles.edit12, handles.edit22, handles.edit32, handles.edit13, handles.edit23, handles.edit33, handles.edit17, handles.edit27, handles.edit37};  
    
     
-      %Èç¹ûÓÃÏÂÃæÁ½Ìõ´úÌæÉÏÃæÁ½Ìõ£¬Ôò·¢ËÍÊý×ÖÎÞÐ§
-%         'BytesAvailableFcnMode','terminator',...   %Ò»µ©½ÓÊÕµ½ÖÕÖ¹·û¾ÍÆô¶¯»Øµ÷º¯Êý£¬ÏÂÎ»»úÃ¿´Î·¢ËÍÒ»´ÎÊý¾Ý£¬¾Í»áÔÚÊý¾ÝµÄ½áÎ²¼ÓÒ»¸öÖÕÖ¹·û
+      %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+%         'BytesAvailableFcnMode','terminator',...   %Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ã¿ï¿½Î·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ½ï¿½Î²ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½
 %         'BytesAvailableFcn',{@mycallback,handles});
 
 % % %  O_Rm = dat(:, size(dat, 2));
@@ -549,39 +549,39 @@ if(judge0 == 1)
 
       
 else
-     errordlg('ÎÞÐ§COM¿Ú','ÌáÊ¾','replace');   %ÌáÊ¾´íÎó  ¼ÓÉÏreplace·ÀÖ¹µ¯³ö¶à¸ö´°¿Ú  
+     errordlg('ï¿½ï¿½Ð§COMï¿½ï¿½','ï¿½ï¿½Ê¾','replace');   %ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½replaceï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 end
 
-string = get(handles.pushbutton2, 'string');%µÃµ½µ±Ç°°´¼üµÄÃû×Ö
+string = get(handles.pushbutton2, 'string');%ï¿½Ãµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 if(strcmpi(string,'CLOSE PORT') == 1)
-    set(handles.pushbutton2,'string','OPEN PORT');  %°´¼üµÄÃû×ÖÉèÎª¡®´ò¿ª´®¿Ú¡¯
+    set(handles.pushbutton2,'string','OPEN PORT');  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½
 
-    %¹Ø±Õ´®¿ÚºóÔÊÐíÐÞ¸Ämenu
+    %ï¿½Ø±Õ´ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½menu
     set(handles.COM_menu,'Enable','on');
     set(handles.BAUD_menu,'Enable','on');
     set(handles.DATA_menu,'Enable','on');
     set(handles.CHECK_menu,'Enable','on');
     set(handles.STOP_menu,'Enable','on');    
     
-    % ²éÕÒ´®¿Ú¶ÔÏó
+    % ï¿½ï¿½ï¿½Ò´ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
     scoms = instrfind;
-    % ³¢ÊÔÍ£Ö¹¡¢¹Ø±ÕÉ¾³ý´®¿Ú¶ÔÏó
+    % ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½Ø±ï¿½É¾ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
     stopasync(scoms);
     fclose(scoms);
     delete(scoms);
 else
     if(judge0==1)
-        set(handles.pushbutton2,'string','CLOSE PORT');  %°´¼üµÄÃû×ÖÉèÎª¡®¹Ø±Õ´®¿Ú¡¯
+        set(handles.pushbutton2,'string','CLOSE PORT');  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ø±Õ´ï¿½ï¿½Ú¡ï¿½
         
-        %´ò¿ª´®¿Úºó½ûÖ¹ÐÞ¸Ämenu
+        %ï¿½ï¿½ï¿½Úºï¿½ï¿½Ö¹ï¿½Þ¸ï¿½menu
         set(handles.COM_menu,'Enable','off');
         set(handles.BAUD_menu,'Enable','off');
         set(handles.DATA_menu,'Enable','off');
         set(handles.CHECK_menu,'Enable','off');
         set(handles.STOP_menu,'Enable','off');
         
-        fopen(s);  %´ò¿ª´®¿Ú
+        fopen(s);  %ï¿½ï¿½ï¿½ï¿½
     end
 end
 
@@ -748,47 +748,47 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 
 global s2 dat2 datLen;
 
-COM_value = get(handles.COM_menu2,'value');  %µÃµ½µ±Ç°COM_menuµÄÖµ
-CHECK_value = get(handles.CHECK_menu2,'value'); %µÃµ½µ±Ç°CHECK_menuµÄÖµ
-BAUD_value = get(handles.BAUD_menu2,'value'); %µÃµ½µ±Ç°BAUD_menuµÄÖµ
-STOP_value = get(handles.STOP_menu2,'value'); %µÃµ½µ±Ç°STOP_menuµÄÖµ
-DATA_value = get(handles.DATA_menu2,'value'); %µÃµ½µ±Ç°DATA_menuµÄÖµ
+COM_value = get(handles.COM_menu2,'value');  %ï¿½Ãµï¿½ï¿½ï¿½Ç°COM_menuï¿½ï¿½Öµ
+CHECK_value = get(handles.CHECK_menu2,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°CHECK_menuï¿½ï¿½Öµ
+BAUD_value = get(handles.BAUD_menu2,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°BAUD_menuï¿½ï¿½Öµ
+STOP_value = get(handles.STOP_menu2,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°STOP_menuï¿½ï¿½Öµ
+DATA_value = get(handles.DATA_menu2,'value'); %ï¿½Ãµï¿½ï¿½ï¿½Ç°DATA_menuï¿½ï¿½Öµ
 
 
 getcom = instrhwinfo ('serial');
-validcom = getcom.SerialPorts;   %»ñµÃÓÐÐ§µÄ´®¿ÚºÅ
+validcom = getcom.SerialPorts;   %ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä´ï¿½ï¿½Úºï¿½
 
-%»ñÈ¡ËùÓÐmenuµÄËùÓÐÖµ
+%ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½menuï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 currentcom = {'COM1','COM2','COM3','COM4','COM5','COM6','COM7','COM8','COM9','COM10','COM11','COM12','COM13','COM14','COM15'};
 currentcheck = {'NONE','ODD','EVEN'};
 currentbaud = [300 600 1200 2400 4800 9600 19200 38400 43000 56000 57600 115200];
 currentstop = [1 2];
 currentdata = [6 7 8];
-judge0 = strcmpi(currentcom{COM_value},validcom); %Èç¹ûÓÐÐ§´®¿ÚºÍÉèÖÃµÄ´®¿ÚÒ»ÑùÎª1£¬·ñÔòÎª0
+judge0 = strcmpi(currentcom{COM_value},validcom); %ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ÃµÄ´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îª1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0
 if(judge0 == 1)
-% % %     s = serial(currentcom{COM_value},'BaudRate',currentbaud(1,BAUD_value),'DataBits',currentdata(1,DATA_value),... %´´½¨ÓÐÐ§COM¿Ú
+% % %     s = serial(currentcom{COM_value},'BaudRate',currentbaud(1,BAUD_value),'DataBits',currentdata(1,DATA_value),... %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
 % % %         'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),...
-% % %         'InputBufferSize',1000,...  %½ÓÊÕ»º³åÖµ×î´óÖµÎª1000
+% % %         'InputBufferSize',1000,...  %ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ÖµÎª1000
 % % %         'TimeOut',1,...
-% % %           'TimerPeriod', 0.1,...   %Ã¿0.1Ãëµ÷ÓÃÒ»´Î½ÓÊÕµÄ»Øµ÷º¯Êý
+% % %           'TimerPeriod', 0.1,...   %Ã¿0.1ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î½ï¿½ï¿½ÕµÄ»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 % % %           'timerfcn', {@mycallback, handles});
 
     
 
-% % %     s = serial(currentcom{COM_value},'BaudRate', currentbaud(1,BAUD_value), 'DataBits',currentdata(1,DATA_value),...  %´´½¨ÓÐÐ§COM¿Ú
+% % %     s = serial(currentcom{COM_value},'BaudRate', currentbaud(1,BAUD_value), 'DataBits',currentdata(1,DATA_value),...  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
 % % %          'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),'FlowControl','none');
     
     s2 = serial(currentcom{COM_value});
     
-    set(s2,'BaudRate', 57600, 'DataBits',currentdata(1,DATA_value),...  %´´½¨ÓÐÐ§COM¿Ú
+    set(s2,'BaudRate', 57600, 'DataBits',currentdata(1,DATA_value),...  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§COMï¿½ï¿½
          'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),'FlowControl','none','InputBufferSize',100);
     s2.BytesAvailableFcnMode = 'terminator';  
     s2.BytesAvailableFcn = {@sub_f_callback2, handles, handles.editout, handles.editsp, handles.edit14, handles.edit24, handles.edit34, ...
         handles.edit15, handles.edit25, handles.edit35, handles.edit16, handles.edit26, handles.edit36, handles.edit17, handles.edit27, handles.edit37};  
    
     
-      %Èç¹ûÓÃÏÂÃæÁ½Ìõ´úÌæÉÏÃæÁ½Ìõ£¬Ôò·¢ËÍÊý×ÖÎÞÐ§
-%         'BytesAvailableFcnMode','terminator',...   %Ò»µ©½ÓÊÕµ½ÖÕÖ¹·û¾ÍÆô¶¯»Øµ÷º¯Êý£¬ÏÂÎ»»úÃ¿´Î·¢ËÍÒ»´ÎÊý¾Ý£¬¾Í»áÔÚÊý¾ÝµÄ½áÎ²¼ÓÒ»¸öÖÕÖ¹·û
+      %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+%         'BytesAvailableFcnMode','terminator',...   %Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ã¿ï¿½Î·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ½ï¿½Î²ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½
 %         'BytesAvailableFcn',{@mycallback,handles});
 
 % % %  O_Rm = dat(:, size(dat, 2));
@@ -801,39 +801,39 @@ if(judge0 == 1)
 
       
 else
-     errordlg('ÎÞÐ§COM¿Ú','ÌáÊ¾','replace');   %ÌáÊ¾´íÎó  ¼ÓÉÏreplace·ÀÖ¹µ¯³ö¶à¸ö´°¿Ú  
+     errordlg('ï¿½ï¿½Ð§COMï¿½ï¿½','ï¿½ï¿½Ê¾','replace');   %ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½replaceï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 end
 
-string = get(handles.pushbutton3, 'string');%µÃµ½µ±Ç°°´¼üµÄÃû×Ö
+string = get(handles.pushbutton3, 'string');%ï¿½Ãµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 if(strcmpi(string,'CLOSE PORT2#') == 1)
-    set(handles.pushbutton3,'string','OPEN PORT2#');  %°´¼üµÄÃû×ÖÉèÎª¡®´ò¿ª´®¿Ú¡¯
+    set(handles.pushbutton3,'string','OPEN PORT2#');  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½
 
-    %¹Ø±Õ´®¿ÚºóÔÊÐíÐÞ¸Ämenu
+    %ï¿½Ø±Õ´ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½menu
     set(handles.COM_menu2,'Enable','on');
     set(handles.BAUD_menu2,'Enable','on');
     set(handles.DATA_menu2,'Enable','on');
     set(handles.CHECK_menu2,'Enable','on');
     set(handles.STOP_menu2,'Enable','on');    
     
-    % ²éÕÒ´®¿Ú¶ÔÏó
+    % ï¿½ï¿½ï¿½Ò´ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
     scoms = instrfind;
-    % ³¢ÊÔÍ£Ö¹¡¢¹Ø±ÕÉ¾³ý´®¿Ú¶ÔÏó
+    % ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½Ø±ï¿½É¾ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
     stopasync(scoms);
     fclose(scoms);
     delete(scoms);
 else
     if(judge0==1)
-        set(handles.pushbutton3,'string','CLOSE PORT2#');  %°´¼üµÄÃû×ÖÉèÎª¡®¹Ø±Õ´®¿Ú¡¯
+        set(handles.pushbutton3,'string','CLOSE PORT2#');  %ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ø±Õ´ï¿½ï¿½Ú¡ï¿½
         
-        %´ò¿ª´®¿Úºó½ûÖ¹ÐÞ¸Ämenu
+        %ï¿½ï¿½ï¿½Úºï¿½ï¿½Ö¹ï¿½Þ¸ï¿½menu
         set(handles.COM_menu2,'Enable','off');
         set(handles.BAUD_menu2,'Enable','off');
         set(handles.DATA_menu2,'Enable','off');
         set(handles.CHECK_menu2,'Enable','off');
         set(handles.STOP_menu2,'Enable','off');
         
-        fopen(s2);  %´ò¿ª´®¿Ú
+        fopen(s2);  %ï¿½ï¿½ï¿½ï¿½
     end
 end
 
@@ -1439,6 +1439,9 @@ global  hx hy hz PlotAxes PlotAxesLen PlotAxes_t axes_plot;
 global  hx2 hy2 hz2 PlotAxes2 PlotAxes_t2 axes_plot2; 
 global  edit_index edit_index2;
 
+global  hx3 hy3 hz3 axes_plot3 PlotAxes3 PlotAxes_t3;
+
+
 global O_Rm O_Rm2;
 
 global ResultEditIndex;
@@ -1467,6 +1470,9 @@ PlotAxesLen = 10;
 
 axes_plot = handles.axes4;
 axes_plot2 = handles.axes5;
+axes_plot3 = handles.axes7;
+
+
 
 
 PlotAxes_t = [1:PlotAxesLen];
@@ -1475,8 +1481,11 @@ PlotAxes = zeros(3, PlotAxesLen);
 PlotAxes_t2 = [1:PlotAxesLen];
 PlotAxes2 = zeros(3, PlotAxesLen);
 
-axes(handles.axes4);
+PlotAxes_t3 = [1:PlotAxesLen];
+PlotAxes3 = zeros(3, PlotAxesLen);
 
+
+axes(handles.axes4);
 hx = plot(PlotAxes_t, PlotAxes(1,:), '-^g');
 hold on;
 hy = plot(PlotAxes_t, PlotAxes(2,:), '-sb');
@@ -1487,8 +1496,8 @@ axis([0, PlotAxesLen, -7, 7]);
 
 legend('X_1_#-angle', 'Y_1_#-angle', 'Z_1_3-angle');
 
-axes(handles.axes5);
 
+axes(handles.axes5);
 hx2 = plot(PlotAxes_t2, PlotAxes2(1,:), '-^g');
 hold on;
 hy2 = plot(PlotAxes_t2, PlotAxes2(2,:), '-sb');
@@ -1498,6 +1507,19 @@ grid on;
 axis([0, PlotAxesLen, -7, 7]);
 
 legend('X_2_#-angle', 'Y_2_#-angle', 'Z_2_#-angle');
+
+
+axes(handles.axes7);
+hx3 = plot(PlotAxes_t3, PlotAxes3(1,:), '-^g');
+hold on;
+hy3 = plot(PlotAxes_t3, PlotAxes3(2,:), '-sb');
+hz3 = plot(PlotAxes_t3, PlotAxes3(2,:), '-*r');
+
+grid on;
+axis([0, PlotAxesLen, -7, 7]);
+
+legend('X-angle', 'Y-angle', 'Z-angle');
+
 
 
 BaseAxes = 1.5 * [0, 1, 0, 0, 0, 0; 0, 0, 0, 1, 0, 0; 0, 0, 0, 0, 0, 1];
@@ -1679,14 +1701,14 @@ global PlotAxes PlotAxesLen PlotAxes_t  axes_plot;
     % % %     
     handles. t = timer('ExecutionMode','fixedRate' ,'TimerFcn',{@CB_f_TimerFunTmp, handles}, 'BusyMode','queue', 'Period', 1);
     start(handles.t);
-    set(gcf, 'DeleteFcn', {@CB_f_TimerDelTmp, handles.t}); %ÉèÖÃ´°¿ÚÏú»ÙÊ±µÄ»Øµ÷º¯Êý
+    set(gcf, 'DeleteFcn', {@CB_f_TimerDelTmp, handles.t}); %ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 
     % % % guidata(hObject, handles);
 
 
 function CB_f_TimerDelTmp(hObject, eventdata, t)
     stop(t);
-    delete(t); %Ïú»Ù¶¨Ê±Æ÷
+    delete(t); %ï¿½ï¿½Ù¶ï¿½Ê±ï¿½ï¿½
     clear all;
     
     
@@ -1751,29 +1773,29 @@ function pushbutton10_Callback(hObject, eventdata, handles)
 
 global s;
 
-send_data = get(handles.edit75, 'string');  %µÃµ½·¢ËÍÇøµÄÊý¾Ý
+send_data = get(handles.edit75, 'string');  %ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 hex_send  = get(handles.SendHEX1, 'value');
 
-if hex_send  %ÈôÎªÊ®Áù½øÖÆ·¢ËÍ£¬»ñÈ¡Òª·¢ËÍµÄÊý¾Ý
+if hex_send  %ï¿½ï¿½ÎªÊ®ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Í£ï¿½ï¿½ï¿½È¡Òªï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½
     
-    n = find(send_data == ' ');   %²éÕÒ¿Õ¸ñ
-    n =[0 n length(send_data)+1]; %¿Õ¸ñµÄË÷ÒýÖµ
+    n = find(send_data == ' ');   %ï¿½ï¿½ï¿½Ò¿Õ¸ï¿½
+    n =[0 n length(send_data)+1]; %ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     
-   %% Ã¿Á½¸öÏàÁÚ¿Õ¸ñÖ®¼äµÄ×Ö·û´®ÎªÊýÖµµÄÊ®Áù½øÖÆÐÎÊ½£¬½«Æä×ª»¯ÎªÊýÖµ
+   %% Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿Õ¸ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Îªï¿½ï¿½Öµï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½Öµ
     for i = 1 : length(n)-1 
-        temp = send_data(n(i)+1 : n(i+1)-1);  %»ñµÃÃ¿¶ÎÊý¾ÝµÄ³¤¶È£¬ÎªÊý¾Ý×ª»»ÎªÊ®½øÖÆ×ö×¼±¸
+        temp = send_data(n(i)+1 : n(i+1)-1);  %ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ÝµÄ³ï¿½ï¿½È£ï¿½Îªï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªÊ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½
         
         if ~rem(length(temp), 2)
-            b{i} = reshape(temp, 2, [])'; %½«Ã¿¶ÎÊ®Áù½øÖÆ×Ö·û´®×ª»¯Îªµ¥ÔªÊý×é
+            b{i} = reshape(temp, 2, [])'; %ï¿½ï¿½Ã¿ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½×ªï¿½ï¿½Îªï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½
         else
             break;
         end
     end
     
-    send_data = hex2dec(b)';     %½«Ê®Áù½øÖÆ×Ö·û´®×ª»¯ÎªÊ®½øÖÆÊý£¬µÈ´ýÐ´Èë´®¿Ú
+    send_data = hex2dec(b)';     %ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½×ªï¿½ï¿½ÎªÊ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½Ð´ï¿½ë´®ï¿½ï¿½
     fwrite(s,send_data, 'uint8', 'async');
     
-else   %Èç¹ûÊÇASCII
+else   %ï¿½ï¿½ï¿½ï¿½ï¿½ASCII
     fprintf(s,send_data);
 end
 
@@ -1787,7 +1809,7 @@ function pushbutton11_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-set(handles.edit75,'string','');    %Çå¿Õ·¢ËÍÇø
+set(handles.edit75,'string','');    %ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½
 
 guidata(hObject, handles);
 
@@ -1823,3 +1845,54 @@ function popupmenu16_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+
+function edit76_Callback(hObject, eventdata, handles)
+% hObject    handle to edit76 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit76 as text
+%        str2double(get(hObject,'String')) returns contents of edit76 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit76_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit76 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in button_save.
+function button_save_Callback(hObject, eventdata, handles)
+% hObject    handle to button_save (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in button_clear.
+function button_clear_Callback(hObject, eventdata, handles)
+% hObject    handle to button_clear (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in button_record.
+function button_record_Callback(hObject, eventdata, handles)
+% hObject    handle to button_record (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function pushbutton3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
