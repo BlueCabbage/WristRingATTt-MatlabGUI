@@ -513,6 +513,7 @@ currentbaud = [300 600 1200 2400 4800 9600 19200 38400 43000 56000 57600 115200]
 currentstop = [1 2];
 currentdata = [6 7 8];
 judge0 = strcmpi(currentcom{COM_value},validcom); %�����Ч���ں����õĴ���һ��Ϊ1������Ϊ0
+
 if(judge0 == 1)
 % % %     s = serial(currentcom{COM_value},'BaudRate',currentbaud(1,BAUD_value),'DataBits',currentdata(1,DATA_value),... %������ЧCOM��
 % % %         'Parity',currentcheck{CHECK_value},'StopBits',currentstop(1,STOP_value),...
